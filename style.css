@@ -1,0 +1,97 @@
+:root {
+  --bg: #f9f9f9;
+  --text: #333;
+  --primary: #222;
+  --button-bg: #222;
+  --button-text: white;
+}
+body.dark {
+  --bg: #121212;
+  --text: #eee;
+  --primary: #ffffff;
+  --button-bg: #ffffff;
+  --button-text: #121212;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+header {
+  background: var(--primary);
+  color: var(--button-text);
+  padding: 1rem 0;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding-left: 0;
+}
+nav a {
+  color: var(--button-text);
+  text-decoration: none;
+}
+.section {
+  padding: 60px 0;
+}
+h2 {
+  margin-bottom: 20px;
+}
+.skills span {
+  display: inline-block;
+  background: #ddd;
+  color: black;
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 20px;
+}
+body.dark .skills span {
+  background: #333;
+  color: #eee;
+}
+.project-list li {
+  margin-bottom: 10px;
+}
+button {
+  padding: 10px 20px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  opacity: 0.85;
+}
+footer {
+  background: var(--primary);
+  color: var(--button-text);
+  text-align: center;
+  padding: 20px 0;
+}
+#theme-toggle {
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: var(--button-text);
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
