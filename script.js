@@ -1,25 +1,55 @@
-// Dark mode toggle
-const toggle = document.getElementById('theme-toggle');
-const body = document.body;
+// ===== Typing Animation =====
+const roles = [
+  "Frontend Developer",
+  "JavaScript Enthusiast",
+  "Web Intern at CodeSpark"
+];
+let roleIndex = 0;
+let charIndex = 0;
+const typingText = document.querySelector(".typing-text");
 
-toggle.addEventListener('click', () => {
-  body.classList.toggle('dark');
-  localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
-});
-
-// Load saved theme
-window.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark');
+function typeEffect() {
+  if (charIndex < roles[roleIndex].length) {
+    typingText.textContent += roles[roleIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(typeEffect, 100);
+  } else {
+    setTimeout(eraseEffect, 2000);
   }
+}
 
-  AOS.init(); // Initialize scroll animations
+function eraseEffect() {
+  if (charIndex > 0) {
+    typingText.textContent = roles[roleIndex].substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(eraseEffect, 50);
+  } else {
+    roleIndex = (roleIndex + 1) % roles.length;
+    setTimeout(typeEffect, 500);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", typeEffect);
+
+// ===== Theme Toggle =====
+const toggleBtn = document.getElementById("toggle-theme");
+const themeIcon = document.getElementById("theme-icon");
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  const isDark = document.body.classList.contains("dark");
+  themeIcon.className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
 });
 
-// Resume download
-function downloadResume() {
-  const link = document.createElement('a');
-  link.href = 'resume.pdf';
-  link.download = 'Rakesh_Resume.pdf';
-  link.click();
-}
+// ===== Dummy Form Submit =====
+const contactForm = document.getElementById("contact-form");
+contactForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  alert("Thank you! Your message has been received.");
+});
+
+
+
+
+
+
